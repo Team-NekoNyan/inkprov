@@ -9,7 +9,7 @@ const OpenSessionsPage: React.FC = () => {
 
   return (
     <div className='container mx-auto px-4 py-8'>
-      <div className='mb-8'>
+      <div className='mb-8 text-left'>
         <h1 className='text-3xl font-bold text-primary-text'>
           Open Writing Sessions
         </h1>
@@ -18,7 +18,9 @@ const OpenSessionsPage: React.FC = () => {
         </p>
       </div>
 
-      <GenreFilter onSelect={handleGenreFilter}></GenreFilter>
+      <div className='my-6'>
+        <GenreFilter onSelect={handleGenreFilter}></GenreFilter>
+      </div>
 
       {/* More placeholder content - to be replaced with actual session list */}
       <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6'>
