@@ -12,20 +12,23 @@ const genres: string[] = [
   "Fantasy",
   "Comedy",
 ];
+interface GenreFilterProps {
+  onSelect: (genre: string) => void;
+}
 
-const GenreFilter: React.FC = () => {
-  const [selectedGenre, setSelectedGenre] = useState("All");
+const GenreFilter: React.FC<GenreFilterProps> = ({ onSelect }) => {
+  const [selectedGenre, setSelectedGenre] = useState<string>("All");
 
   // this handler sends filter selected to SessionsPage to render filter
-  // also this handler prevents
   const handleSelect = (value: string | null) => {
     // if value is truthy send the filter type to parent
+    // and prevent to spam onSelect handler
     if (value) {
+      setSelectedGenre(value);
       console.log(value);
-      setSelectedGenre(value); // preventing from deselecting when re-clicking same filter
+      onSelect(value); // sending what genre to filter
     } else {
-      // this code is for if re-selected it would do the following (might need if we want refresh on re-select) if not delete this
-      // if this is deleted , it could be better as is it wont cause refresh on spam select on a button
+      // if we want to refresh on re-select, but then could be spammed
       console.log(selectedGenre);
     }
   };

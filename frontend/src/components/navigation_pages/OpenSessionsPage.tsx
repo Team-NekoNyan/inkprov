@@ -2,6 +2,11 @@ import React from "react";
 import GenreFilter from "../GenreFilter";
 
 const OpenSessionsPage: React.FC = () => {
+  // handler to change ProjectCard based on filter from GenreFilter
+  const handleGenreFilter = (genre: string) => {
+    console.log("I came from GenreFilter component: " + genre);
+  };
+
   return (
     <div className='container mx-auto px-4 py-8'>
       <div className='mb-8'>
@@ -13,7 +18,7 @@ const OpenSessionsPage: React.FC = () => {
         </p>
       </div>
 
-      <GenreFilter></GenreFilter>
+      <GenreFilter onSelect={handleGenreFilter}></GenreFilter>
 
       {/* More placeholder content - to be replaced with actual session list */}
       <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6'>
