@@ -1,5 +1,7 @@
 import React from "react";
 import GenreFilter from "../GenreFilter";
+import SearchBar from "../SearchBar";
+import { Button } from "@/components/ui/button";
 
 const OpenSessionsPage: React.FC = () => {
   // handler to change ProjectCard based on filter from GenreFilter
@@ -9,13 +11,18 @@ const OpenSessionsPage: React.FC = () => {
 
   return (
     <div className='container mx-auto px-4 py-8'>
-      <div className='mb-8 text-left'>
+      <header className='mb-8 text-left'>
         <h1 className='text-3xl font-bold text-primary-text'>
           Open Writing Sessions
         </h1>
         <p className='text-secondary-text mt-2'>
           Join an existing session or create your own.
         </p>
+      </header>
+
+      <div className=''>
+        <SearchBar />
+        <Button>+ Create Session</Button>
       </div>
 
       <div className='my-6'>
@@ -89,27 +96,6 @@ const OpenSessionsPage: React.FC = () => {
             </button>
           </div>
         </div>
-      </div>
-
-      {/* Create New Session Button - pretty sure Tanner has a Button component that can be used here */}
-
-      <div className='mt-8 flex justify-center'>
-        <button className='bg-indigo-600 hover:bg-indigo-700 text-white px-6 py-3 rounded-lg font-medium flex items-center gap-2'>
-          <svg
-            className='w-5 h-5'
-            fill='none'
-            stroke='currentColor'
-            viewBox='0 0 24 24'
-          >
-            <path
-              strokeLinecap='round'
-              strokeLinejoin='round'
-              strokeWidth='2'
-              d='M12 4v16m8-8H4'
-            />
-          </svg>
-          Create New Session
-        </button>
       </div>
     </div>
   );
