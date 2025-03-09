@@ -20,7 +20,7 @@ const GenreFilter: React.FC<GenreFilterProps> = ({ onSelect }) => {
   const [selectedGenre, setSelectedGenre] = useState<string>("All");
 
   // this handler sends filter selected to SessionsPage to render filter
-  const handleSelect = (value: string | null) => {
+  const handleSelectFilter = (value: string | null) => {
     // if value is truthy send the filter type to parent
     // and prevent to spam onSelect handler
     if (value) {
@@ -34,12 +34,12 @@ const GenreFilter: React.FC<GenreFilterProps> = ({ onSelect }) => {
   };
 
   return (
-    // ToggleGroup is like a bunch of Buttons together, when select button it will go to handleSelect
+    // ToggleGroup is like a bunch of Buttons together, when selected a button it will go to handleSelect
     <ToggleGroup
       className='bg-secondary-background text-[var(--filter-btn-text)]'
       type='single'
       value={selectedGenre}
-      onValueChange={handleSelect}
+      onValueChange={handleSelectFilter}
     >
       {/* map through hard coded genres */}
       {genres.map((genre) => (

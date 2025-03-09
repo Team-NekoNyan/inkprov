@@ -1,29 +1,50 @@
-import React from "react";
+import React, { useState, useCallback } from "react";
 import GenreFilter from "../GenreFilter";
 import SearchBar from "../SearchBar";
 import { Button } from "@/components/ui/button";
 
 const OpenSessionsPage: React.FC = () => {
   // handler to change ProjectCard based on filter from GenreFilter
-  const handleGenreFilter = (genre: string) => {
+  const handleGenreFilter = (genre: string = "All") => {
     console.log("I came from GenreFilter component: " + genre);
   };
 
+  // When create Session btn is clicked go to create new Session page
+  const handleCreateSession = () => {
+    console.log("Going to page: CreateSession");
+  };
+
+  // handle search , useCallback prevents handleSearh to render on every render of this page,
+  // but will render on refresh with empty string, could cause bug
+  const handleSearch = useCallback((query: string) => {
+    console.log("Search: " + query);
+    if (query === "") return; // => TODO return all cards
+
+    // TO DO replace this with ProjectCard with Title == query
+  }, []);
+
   return (
     <div className='container mx-auto px-4 py-8'>
-      <header className='mb-8 text-left'>
-        <h1 className='text-3xl font-bold text-primary-text'>
-          Open Writing Sessions
-        </h1>
-        <p className='text-secondary-text mt-2'>
-          Join an existing session or create your own.
-        </p>
-      </header>
+      <header className='flex justify-between'>
+        <div className='mb-8 text-left'>
+          <h1 className='text-3xl font-bold text-primary-text'>
+            Open Writing Sessions
+          </h1>
+          <p className='text-secondary-text mt-2'>
+            Join an existing session or create your own.
+          </p>
+        </div>
 
-      <div className=''>
-        <SearchBar />
-        <Button className='bg-amber-800'>+ Create Session</Button>
-      </div>
+        <div className='flex gap-3'>
+          <SearchBar onSearch={handleSearch} />
+          <Button
+            className='bg-amber-800 hover:bg-amber-700'
+            onClick={handleCreateSession}
+          >
+            + Create Session
+          </Button>
+        </div>
+      </header>
 
       <div className='my-6'>
         <GenreFilter onSelect={handleGenreFilter}></GenreFilter>
