@@ -22,7 +22,7 @@ const OpenSessionsPage: React.FC = () => {
 
       <div className=''>
         <SearchBar />
-        <Button>+ Create Session</Button>
+        <Button className='bg-amber-800'>+ Create Session</Button>
       </div>
 
       <div className='my-6'>
