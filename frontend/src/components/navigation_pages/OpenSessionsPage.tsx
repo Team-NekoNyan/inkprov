@@ -5,6 +5,35 @@ import ProjectCard from "../ProjectCard";
 import { Button } from "@/components/ui/button";
 
 const OpenSessionsPage: React.FC = () => {
+  const sessionsHardCodedData = [
+    {
+      id: "1",
+      title: "Creative Writing",
+      description:
+        "Join our weekly creative writing workshop. All skill levels welcome!",
+      genre: "Adventure",
+      currentContributors: "2",
+      maxContributors: "4",
+    },
+    {
+      id: "2",
+      title: "Poetry Collaboration",
+      description:
+        "Collaborative poetry writing session. Share and create together.",
+      genre: "Horror",
+      currentContributors: "1",
+      maxContributors: "3",
+    },
+    {
+      id: "3",
+      title: "Story Development",
+      description: "Work on character development and plot structure together.",
+      genre: "Romance",
+      currentContributors: "3",
+      maxContributors: "5",
+    },
+  ];
+
   // handler to change ProjectCard based on filter from GenreFilter
   const handleGenreFilter = (genre: string = "All") => {
     console.log("I came from GenreFilter component: " + genre);
@@ -53,40 +82,11 @@ const OpenSessionsPage: React.FC = () => {
 
       {/* More placeholder content - to be replaced with actual session list */}
       <section className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6'>
-        <article className=''>
-          <ProjectCard
-            sessionData={{
-              id: "1",
-              title: "Creative Writing",
-              description:
-                "Join our weekly creative writing workshop. All skill levels welcome!",
-              genre: "Adventure",
-              contributors: ["Somedude", "someotherdude"],
-              dateCompleted: "april 2nd",
-            }}
-          />
-          {/* <div className='flex justify-between items-start mb-4'>
-            <h3 className='text-lg font-semibold text-primary-text'>
-              Creative Writing Workshop
-            </h3>
-            <span className='bg-green-100 text-green-800 text-xs px-2 py-1 rounded'>
-              Open
-            </span>
-          </div>
-          <p className='text-secondary-text mb-4'>
-            Join our weekly creative writing workshop. All skill levels welcome!
-          </p>
-          <div className='flex justify-between items-center'>
-            <span className='text-sm text-secondary-text'>
-              2/8 participants
-            </span>
-            <button className='bg-primary-button hover:bg-primary-button-hover text-white px-4 py-2 rounded'>
-              Join Session
-            </button>
-          </div> */}
-        </article>
-
-        <div className='bg-background rounded-lg p-6 shadow-sm border border-primary-border'>
+        {sessionsHardCodedData.map((session) => (
+          <ProjectCard key={session.id} projectData={session} />
+        ))}
+      </section>
+      {/* <div className='bg-background rounded-lg p-6 shadow-sm border border-primary-border'>
           <div className='flex justify-between items-start mb-4'>
             <h3 className='text-lg font-semibold text-primary-text'>
               Poetry Collaboration
@@ -128,8 +128,7 @@ const OpenSessionsPage: React.FC = () => {
               Join Session
             </button>
           </div>
-        </div>
-      </section>
+        </div> */}
     </main>
   );
 };

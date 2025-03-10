@@ -1,6 +1,5 @@
 import React from "react";
 import ProjectCard from "../ProjectCard";
-import { Button } from "@/components/ui/button";
 
 const ProjectsPage: React.FC = () => {
   // Placeholder completed projects data
@@ -17,7 +16,7 @@ const ProjectsPage: React.FC = () => {
         "Carol White",
         "David Brown",
       ],
-      dateCompleted: "2024-03-15",
+      dateCompleted: new Date("2024-03-15"),
     },
     {
       id: "2",
@@ -32,7 +31,7 @@ const ProjectsPage: React.FC = () => {
         "Henry Miller",
         "Isabel Chen",
       ],
-      dateCompleted: "2024-03-10",
+      dateCompleted: new Date("2024-03-10"),
     },
     {
       id: "3",
@@ -41,7 +40,7 @@ const ProjectsPage: React.FC = () => {
         "A collaborative mystery set on a train where each passenger holds a piece of the puzzle.",
       genre: "Mystery",
       contributors: ["James Wright", "Kelly Thompson", "Liam O'Connor"],
-      dateCompleted: "2024-03-08",
+      dateCompleted: new Date("2024-03-08"),
     },
     {
       id: "4",
@@ -55,34 +54,26 @@ const ProjectsPage: React.FC = () => {
         "Olivia Kim",
         "Paul Chen",
       ],
-      dateCompleted: "2024-03-01",
+      dateCompleted: new Date("2024-03-01"),
     },
   ];
 
   return (
-    <div className="container mx-auto px-4 py-8">
-      <div className="flex justify-between items-center mb-8">
+    <div className='container mx-auto px-4 py-8'>
+      <div className='flex justify-between items-center mb-8'>
         <div>
-          <h1 className="text-3xl font-bold text-primary-text">
+          <h1 className='text-3xl font-bold text-primary-text'>
             Completed Stories
           </h1>
-          <p className="text-secondary-text mt-2">
+          <p className='text-secondary-text mt-2'>
             Browse and read collaborative stories created by our community
           </p>
         </div>
       </div>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+      <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6'>
         {completedProjects.map((project) => (
-          <ProjectCard
-            key={project.id}
-            id={project.id}
-            title={project.title}
-            description={project.description}
-            genre={project.genre}
-            contributors={project.contributors}
-            dateCompleted={project.dateCompleted}
-          />
+          <ProjectCard key={project.id} projectData={project} />
         ))}
       </div>
     </div>
