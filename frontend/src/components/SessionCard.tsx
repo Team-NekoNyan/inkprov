@@ -1,5 +1,6 @@
 import React from "react";
 import { Users } from "lucide-react";
+import { useNavigate } from "react-router-dom";
 import {
   Button,
   Card,
@@ -30,6 +31,8 @@ interface SessionCardData {
 const SessionCard: React.FC<SessionCardData> = ({
   sessionData,
 }): React.ReactElement => {
+  const navigate = useNavigate();
+
   return (
     <Card className='w-[350px] h-[250px] bg-backgournd-card'>
       <CardHeader>
@@ -55,7 +58,7 @@ const SessionCard: React.FC<SessionCardData> = ({
         {/* TO DO => needs a handler for onClick(), but not should how to implement that (wait until fetched data is done in SessionPage component) */}
         <Button
           className='bg-amber-800  hover:bg-amber-700'
-          onClick={(): void => console.log("co-writing page of session Id")}
+          onClick={() => navigate(`/writing/${sessionData.id}`)}
         >
           Join Session
         </Button>

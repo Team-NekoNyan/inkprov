@@ -3,6 +3,7 @@ import GenreFilter from "../GenreFilter";
 import SearchBar from "../SearchBar";
 import SessionCard from "../SessionCard";
 import { Button } from "@/components/ui/button";
+import { useNavigate } from "react-router-dom";
 
 const OpenSessionsPage: React.FC = () => {
   const sessionsHardCodedData = [
@@ -34,14 +35,11 @@ const OpenSessionsPage: React.FC = () => {
     },
   ];
 
+  const navigate = useNavigate();
+
   // handler to change SessionCard based on filter from GenreFilter
   const handleGenreFilter = (genre: string = "All") => {
     console.log("I came from GenreFilter component: " + genre);
-  };
-
-  // When create Session btn is clicked go to create new Session page
-  const handleCreateSession = () => {
-    console.log("Going to page: CreateSession");
   };
 
   // handle search , useCallback prevents handleSearh to render on every render of this page,
@@ -69,7 +67,7 @@ const OpenSessionsPage: React.FC = () => {
           <SearchBar onSearch={handleSearch} />
           <Button
             className='bg-amber-800 hover:bg-amber-700'
-            onClick={handleCreateSession}
+            onClick={() => navigate(`/create`)}
           >
             + Create Session
           </Button>
