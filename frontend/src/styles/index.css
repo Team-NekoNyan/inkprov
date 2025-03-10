@@ -168,3 +168,38 @@
     @apply bg-background text-foreground;
   }
 }
+
+/* Genre Colors for Badges, if add make sure to genre-${genre.toLowerCase()} in the className */
+@layer utilities {
+  .genre-horror {
+    @apply bg-gray-700 text-white;
+  }
+
+  .genre-fantasy {
+    @apply bg-purple-500 text-white;
+  }
+
+  .genre-sci-fi {
+    @apply bg-blue-500 text-white;
+  }
+
+  .genre-comdey {
+    @apply bg-yellow-400 text-white;
+  }
+
+  .genre-adventure {
+    @apply bg-green-600 text-white;
+  }
+
+  .genre-all {
+    @apply bg-amber-600 text-white;
+  }
+
+  .genre-romance {
+    @apply bg-pink-500 text-white;
+  }
+
+  .genre-mystery {
+    @apply bg-indigo-700 text-white;
+  }
+}

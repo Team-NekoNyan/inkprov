@@ -33,7 +33,9 @@ const SessionCard: React.FC<SessionCardData> = ({
     <Card className='w-[350px] h-[250px] bg-background-card'>
       <CardHeader>
         <div className='flex justify-between items-center'>
-          <Badge className='bg-amber-600'>{sessionData.genre}</Badge>
+          <Badge className={`genre-${sessionData.genre.toLowerCase()}`}>
+            {sessionData.genre}
+          </Badge>
           <div className='flex items-center gap-1'>
             <Users className='text-secondary-text p-0.5' />
             <span className='text-secondary-text text-sm'>

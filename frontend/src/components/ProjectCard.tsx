@@ -33,7 +33,9 @@ const ProjectCard: React.FC<ProjectCardData> = ({ projectData }) => {
       <CardHeader>
         <div className='flex justify-between items-center'>
           {/* TO DO change badge color based on genre, e.g. Horror = black background white text */}
-          <Badge className='bg-amber-600'>{projectData.genre}</Badge>
+          <Badge className={`genre-${projectData.genre.toLowerCase()}`}>
+            {projectData.genre}
+          </Badge>
           <div className='flex items-center gap-1'>
             <Users className='text-secondary-text p-0.5' />
             <span className='text-secondary-text text-sm'>

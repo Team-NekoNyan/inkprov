@@ -25,7 +25,7 @@ const ProjectsPage: React.FC = () => {
       title: "Echoes of Tomorrow",
       description:
         "Five writers explore a future where technology and humanity find new ways to coexist.",
-      genre: "Science Fiction",
+      genre: "Sci-Fi",
       contributors: [
         "Emma Davis",
         "Frank Wilson",
@@ -49,7 +49,7 @@ const ProjectsPage: React.FC = () => {
       title: "Seasons of Change",
       description:
         "A heartwarming story about community and growth, told through the eyes of different residents.",
-      genre: "Drama",
+      genre: "Comdey",
       contributors: [
         "Maria Rodriguez",
         "Noah Parker",
