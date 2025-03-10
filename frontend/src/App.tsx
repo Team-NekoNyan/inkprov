@@ -7,6 +7,7 @@ import Footer from "./components/Footer";
 import LandingPage from "./components/navigation_pages/LandingPage";
 import LoginPage from "./components/auth/LoginPage";
 import RegisterPage from "./components/auth/RegisterPage";
+import Settings from "./components/navigation_pages/Settings";
 import OnboardingPage from "./components/navigation_pages/OnboardingPage";
 import OpenSessionsPage from "./components/navigation_pages/OpenSessionsPage";
 import ProjectsPage from "./components/navigation_pages/ProjectsPage";
@@ -59,10 +60,21 @@ const AppRoutes: React.FC = () => {
           }
         />
 
+        <Route
+          path="/settings"
+          element={
+            isAuthenticated ? (
+              <Settings />
+            ) : (
+              <Navigate to="/login" replace />
+            )
+          }
+        />
+
         {/* Redirect unknown routes to home */}
         <Route path="*" element={<Navigate to="/" replace />} />
       </Routes>
-      <Footer/>
+      <Footer />
     </div>
   );
 };
