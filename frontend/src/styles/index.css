@@ -7,6 +7,7 @@
 :root {
   --background: oklch(96.92% 0.0162 95.22);
   --secondary-background: oklch(100% 0 0);
+  --tertiary-background: oklch(0.924 0.12 95.746);
   --primary-text: oklch(42.1% 0.0897 57.71);
   --hover-text: oklch(55.53% 0.1455 49);
   --secondary-text: oklch(47.32% 0.1247 46.2);
@@ -26,7 +27,6 @@
   --menu-background: oklch(96.92% 0.0162 95.22);
   --menu-hover: oklch(96.19% 0.058 95.62);
   --accent: oklch(96.19% 0.058 95.62);
-  --background: oklch(1 0 0);
   --background-card: oklch(96.74% 0.001 286.38);
   --foreground: oklch(0.145 0 0);
   --card: oklch(1 0 0);
@@ -39,7 +39,6 @@
   --secondary-foreground: oklch(0.205 0 0);
   --muted: oklch(0.97 0 0);
   --muted-foreground: oklch(0.556 0 0);
-  --accent: oklch(0.97 0 0);
   --accent-foreground: oklch(0.205 0 0);
   --destructive: oklch(0.577 0.245 27.325);
   --destructive-foreground: oklch(0.577 0.245 27.325);
@@ -99,6 +98,7 @@
 @theme inline {
   --color-background: var(--background);
   --color-secondary-background: var(--secondary-background);
+  --color-tertiary-background: var(--tertiary-background);
   --color-primary-text: var(--primary-text);
   --color-hover-text: var(--hover-text);
   --color-secondary-text: var(--secondary-text);

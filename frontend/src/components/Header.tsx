@@ -182,15 +182,17 @@ const Header: React.FC<HeaderProps> = function Header({ loggedIn, page }) {
         <div className="flex gap-4">
           {/* Auth Buttons */}
           <Button
-            onClick={() => navigate("/login")}
+            className="text-primary-text text-md hover:no-underline hover:text-hover-text cursor-pointer"
             variant="link"
-            className="text-primary-text hover:no-underline hover:text-hover-text"
+            onClick={() => window.location.href = "/login"}
           >
             Sign In
           </Button>
+
           <Button
-            onClick={() => navigate("/register")}
-            className="bg-primary-button hover:bg-primary-button-hover"
+            className="bg-primary-button hover:bg-primary-button-hover cursor-pointer"
+            variant="default"
+            onClick={() => window.location.href = "/register"}
           >
             Get Started
           </Button>
