@@ -1,12 +1,18 @@
-import React, { useCallback } from "react";
+import React, { useCallback, useState } from "react";
 import GenreFilter from "../GenreFilter";
 import SearchBar from "../SearchBar";
 import SessionCard from "../SessionCard";
 import { Button } from "@/components/ui/button";
 import { useNavigate } from "react-router-dom";
+import { SessionCardData } from "@/types/global";
+import { log } from "util";
 
 const OpenSessionsPage: React.FC = () => {
-  const sessionsHardCodedData = [
+  const [filteredGenre, setFilteredGenre] = useState<SessionCardData[] | null>(
+    null
+  );
+
+  const sessionsHardCodedData: SessionCardData[] = [
     {
       id: "1",
       title: "Creative Writing",
@@ -39,7 +45,15 @@ const OpenSessionsPage: React.FC = () => {
 
   // handler to change SessionCard based on filter from GenreFilter
   const handleGenreFilter = (genre: string = "All") => {
-    console.log("I came from GenreFilter component: " + genre);
+    console.log(genre);
+
+    if (genre === "All" || genre === null) {
+      setFilteredGenre(sessionsHardCodedData);
+    } else {
+      setFilteredGenre(
+        sessionsHardCodedData.filter((session) => session.genre === genre)
+      );
+    }
   };
 
   // handle search , useCallback prevents handleSearh to render on every render of this page,
@@ -80,7 +94,7 @@ const OpenSessionsPage: React.FC = () => {
 
       {/* More placeholder content - to be replaced with actual session list */}
       <section className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6'>
-        {sessionsHardCodedData.map((session) => (
+        {(filteredGenre || sessionsHardCodedData).map((session) => (
           <SessionCard key={session.id} sessionData={session} />
         ))}
       </section>

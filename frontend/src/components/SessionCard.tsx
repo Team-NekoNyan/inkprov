@@ -10,21 +10,13 @@ import {
   CardTitle,
   Badge,
 } from "@/components/ui";
+import { SessionCardData } from "@/types/global";
 
-// Receive props from OpenSessionPage
-// SessionPage needs to handle fetch session data from the database
-interface SessionCardData {
-  sessionData: {
-    id: string; // not sure if this will be a number or sting
-    title: string;
-    description: string;
-    genre: string;
-    currentContributors: string; // number or string
-    maxContributors: string;
-  };
+interface SessionCardDataProp {
+  sessionData: SessionCardData;
 }
 
-const SessionCard: React.FC<SessionCardData> = ({
+const SessionCard: React.FC<SessionCardDataProp> = ({
   sessionData,
 }): React.ReactElement => {
   const navigate = useNavigate();
