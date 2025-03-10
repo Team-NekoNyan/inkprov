@@ -1,5 +1,7 @@
-import React from "react";
+import React, { useCallback } from "react";
 import ProjectCard from "../ProjectCard";
+import SearchBar from "../SearchBar";
+import GenreFilter from "../GenreFilter";
 
 const ProjectsPage: React.FC = () => {
   // Placeholder completed projects data
@@ -58,10 +60,35 @@ const ProjectsPage: React.FC = () => {
     },
   ];
 
+  // handler to change SessionCard based on filter from GenreFilter
+  const handleGenreFilter = (genre: string = "All") => {
+    console.log("I came from GenreFilter component: " + genre);
+  };
+
+  // handle search , useCallback prevents handleSearh to render on every render of this page,
+  // but will render on refresh with empty string, could cause bug
+  const handleSearch = useCallback((query: string) => {
+    console.log("Search: " + query);
+    if (query === "") return; // => TODO return all cards
+
+    // TO DO replace this with ProjectCard with Title == query
+  }, []);
+
   return (
-    <div className='container mx-auto px-4 py-8'>
-      <div className='flex justify-between items-center mb-8'>
-        <div>
+    // <main className='container mx-auto px-4 py-8'>
+    //   <div className='flex justify-between items-center mb-8'>
+    //     <div>
+    //       <h1 className='text-3xl font-bold text-primary-text'>
+    //         Completed Stories
+    //       </h1>
+    //       <p className='text-secondary-text mt-2'>
+    //         Browse and read collaborative stories created by our community
+    //       </p>
+    //     </div>
+    //   </div>
+    <main className='container mx-auto px-4 py-8'>
+      <header className='flex justify-between'>
+        <div className='mb-8 text-left'>
           <h1 className='text-3xl font-bold text-primary-text'>
             Completed Stories
           </h1>
@@ -69,14 +96,22 @@ const ProjectsPage: React.FC = () => {
             Browse and read collaborative stories created by our community
           </p>
         </div>
-      </div>
+
+        <div className='flex gap-3'>
+          <SearchBar onSearch={handleSearch} />
+        </div>
+      </header>
+
+      <nav className='my-6'>
+        <GenreFilter onSelect={handleGenreFilter}></GenreFilter>
+      </nav>
 
       <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6'>
         {completedProjects.map((project) => (
           <ProjectCard key={project.id} projectData={project} />
         ))}
       </div>
-    </div>
+    </main>
   );
 };
 

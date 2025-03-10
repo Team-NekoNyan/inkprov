@@ -11,10 +11,8 @@ import {
   Badge,
 } from "@/components/ui";
 
-// Receive props from SessionPage component
+// Receive props from OpenSessionPage
 // SessionPage needs to handle fetch session data from the database
-// TO DO => interface needs to be put in a global file later?
-// might need to refactor to either pass the properties of session or pass the whole session data as object
 interface SessionCardData {
   sessionData: {
     id: string; // not sure if this will be a number or sting
@@ -26,21 +24,19 @@ interface SessionCardData {
   };
 }
 
-// TO DO => implement a way for the card to switch between sessions card to project card
-// based on if on SessionPage or ExplorePage
 const SessionCard: React.FC<SessionCardData> = ({
   sessionData,
 }): React.ReactElement => {
   const navigate = useNavigate();
 
   return (
-    <Card className='w-[350px] h-[250px] bg-backgournd-card'>
+    <Card className='w-[350px] h-[250px] bg-background-card'>
       <CardHeader>
         <div className='flex justify-between items-center'>
           <Badge className='bg-amber-600'>{sessionData.genre}</Badge>
-          <div className='flex'>
-            <Users className='text-amber-800 mx-1' />
-            <span className='text-amber-800'>
+          <div className='flex items-center gap-1'>
+            <Users className='text-secondary-text p-0.5' />
+            <span className='text-secondary-text text-sm'>
               {sessionData.currentContributors}/{sessionData.maxContributors}
             </span>
           </div>
@@ -50,14 +46,13 @@ const SessionCard: React.FC<SessionCardData> = ({
         </CardTitle>
       </CardHeader>
       <div className='bg-white'>
-        <CardDescription className='m-4 text-amber-700'>
+        <CardDescription className='m-4 text-secondary-text'>
           {sessionData.description}
         </CardDescription>
       </div>
       <CardFooter className='flex justify-center'>
-        {/* TO DO => needs a handler for onClick(), but not should how to implement that (wait until fetched data is done in SessionPage component) */}
         <Button
-          className='bg-amber-800  hover:bg-amber-700'
+          className='bg-primary-button hover:bg-primary-button-hover'
           onClick={() => navigate(`/writing/${sessionData.id}`)}
         >
           Join Session
