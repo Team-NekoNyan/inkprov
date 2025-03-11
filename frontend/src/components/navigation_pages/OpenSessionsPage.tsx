@@ -5,7 +5,6 @@ import SessionCard from "../SessionCard";
 import { Button } from "@/components/ui/button";
 import { useNavigate } from "react-router-dom";
 import { SessionCardData } from "@/types/global";
-import { log } from "util";
 
 const OpenSessionsPage: React.FC = () => {
   const [filteredGenre, setFilteredGenre] = useState<SessionCardData[] | null>(

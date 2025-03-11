@@ -10,21 +10,14 @@ import {
   CardTitle,
   Badge,
 } from "@/components/ui";
+import { ProjectCardData } from "@/types/global";
 
-interface ProjectCardData {
-  projectData: {
-    id: string;
-    title: string;
-    description: string;
-    genre: string;
-    contributors: string[];
-    dateCompleted: Date;
-    // reacts: react[] extended feature
-  };
+interface ProjectCardDataProp {
+  projectData: ProjectCardData;
 }
 
 // ProjectCards
-const ProjectCard: React.FC<ProjectCardData> = ({ projectData }) => {
+const ProjectCard: React.FC<ProjectCardDataProp> = ({ projectData }) => {
   const navigate = useNavigate();
 
   return (

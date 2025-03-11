@@ -1,11 +1,16 @@
-import React, { useCallback } from "react";
+import React, { useCallback, useState } from "react";
 import ProjectCard from "../ProjectCard";
 import SearchBar from "../SearchBar";
 import GenreFilter from "../GenreFilter";
+import { ProjectCardData } from "@/types/global";
 
 const ProjectsPage: React.FC = () => {
+  const [filteredGenre, setFilteredGenre] = useState<ProjectCardData[] | null>(
+    null
+  );
+
   // Placeholder completed projects data
-  const completedProjects = [
+  const completedProjects: ProjectCardData[] = [
     {
       id: "1",
       title: "The Midnight Garden",
@@ -62,7 +67,15 @@ const ProjectsPage: React.FC = () => {
 
   // handler to change SessionCard based on filter from GenreFilter
   const handleGenreFilter = (genre: string = "All") => {
-    console.log("I came from GenreFilter component: " + genre);
+    console.log(genre);
+
+    if (genre === "All" || genre === null) {
+      setFilteredGenre(completedProjects);
+    } else {
+      setFilteredGenre(
+        completedProjects.filter((project) => project.genre === genre)
+      );
+    }
   };
 
   // handle search , useCallback prevents handleSearh to render on every render of this page,
@@ -75,17 +88,6 @@ const ProjectsPage: React.FC = () => {
   }, []);
 
   return (
-    // <main className='container mx-auto px-4 py-8'>
-    //   <div className='flex justify-between items-center mb-8'>
-    //     <div>
-    //       <h1 className='text-3xl font-bold text-primary-text'>
-    //         Completed Stories
-    //       </h1>
-    //       <p className='text-secondary-text mt-2'>
-    //         Browse and read collaborative stories created by our community
-    //       </p>
-    //     </div>
-    //   </div>
     <main className='container mx-auto px-4 py-8'>
       <header className='flex justify-between'>
         <div className='mb-8 text-left'>
@@ -107,7 +109,7 @@ const ProjectsPage: React.FC = () => {
       </nav>
 
       <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6'>
-        {completedProjects.map((project) => (
+        {(filteredGenre || completedProjects).map((project) => (
           <ProjectCard key={project.id} projectData={project} />
         ))}
       </div>
