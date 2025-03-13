@@ -32,7 +32,7 @@ const ProjectCard: React.FC<ProjectCardDataProp> = ({ projectData }) => {
       // Get user's auth_id from users_ext
       const { data: userExtData, error: userExtError } = await supabase
         .from("users_ext")
-        .select("*")
+        .select("id")
         .eq("user_email", user.email)
         .single();
 
@@ -41,14 +41,15 @@ const ProjectCard: React.FC<ProjectCardDataProp> = ({ projectData }) => {
       // Check if user is a contributor
       const { data: contributorData, error: contributorError } = await supabase
         .from("project_contributors")
-        .select("*")
+        .select("id")
         .eq("project_id", projectData.id)
         .eq("user_id", userExtData.id)
+        .eq("user_made_contribution", true)
         .single();
 
       if (contributorError) return;
 
-      // gives true user is in the project, but maybe should check if => user_made_contribution is true
+      // gives true user is in the project
       setIsContributor(!!contributorData);
     };
 

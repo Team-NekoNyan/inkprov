@@ -5,12 +5,17 @@ import { ToggleGroup, ToggleGroupItem } from "@/components/ui/toggle-group";
 const genres: string[] = [
   "All",
   "Adventure",
-  "Horror",
-  "Romance",
-  "Mystery",
-  "Sci-Fi",
-  "Fantasy",
   "Comedy",
+  "Crime",
+  "Fantasy",
+  "History",
+  "Horror",
+  "Mystery",
+  "Paranormal",
+  "Romance",
+  "Sci-Fi",
+  "Thriller",
+  "Western",
 ];
 interface GenreFilterProps {
   onSelect: (genre: string) => void;
